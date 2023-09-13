@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWAPI SPA</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close-btn" id="modal-close-btn">&times;</span>
+        <div id="modal-content-container">
+          <!-- Contenido del modal se agregará dinámicamente aquí -->
+        </div>
+      </div>
+    </div>
+    <h1 class="star-wars-title">Star Wars API SPA</h1>
+    <select id="categoryPicker">
+      <option value="films">Movies</option>
+      <option value="people">Characters</option>
+      <option value="planets">Planets</option>
+      <option value="species">Species</option>
+      <option value="starships">StarShips</option>
+      <option value="vehicles">Vehicles</option>
+    </select>
+    <table id="dataTable">
+      <thead>
+        <!-- Encabezados de la tabla -->
+        <tr>
+          <!-- Las columnas variarán según la categoría seleccionada -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filas de la tabla -->
+        <!-- Los datos se agregarán dinámicamente aquí -->
+      </tbody>
+    </table>
+    <!-- Footer para el paginado -->
+    <div id="paginationFooter">
+      <button id="prevPageBtn">Previous</button>
+      <span><span id="currentPage">1</span></span>
+      <span> of <span id="lastPage">1</span></span>
+      <button id="nextPageBtn">Next</button>
+  </div>
+</div>
+    <div id="app"></div>
+    <script src="js/main.js"></script>
+    <script id="categoryScript" src=""></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+/* Estilo para el fondo */
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://i.pinimg.com/originals/57/1b/ed/571bed61046e085aa23e45d8c3f27dbf.jpg");
+  background-color: rgba(0, 0, 0, 1); /* Cambia el valor de opacidad aquí */
+  background-size: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+a {
+  color: #ffe81f;
+  text-decoration: none;
+}
+
+.star-wars-title {
+  color: #ffe81f;
+}
+
+/* Estilos para el encabezado */
+h1 {
+  font-size: 36px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos para el contenido principal */
+#app {
+  width: 100%;
+  height: auto;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Fondo semi-transparente para mejorar la legibilidad */
+  border-radius: 10px;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  color: black;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+#paginationFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Fija el footer en la parte inferior de la ventana */
+  bottom: 0; /* Lo coloca en la parte inferior de la ventana */
+  left: 0;
+  right: 0;
+  color: white;
+  padding: 10px; /* Agrega espacio interno si es necesario */
+}
+#paginationFooter button {
+  margin: 20px;
+  height: 40px;
+  width: 40px;
+  background-color: #ffe81f;
+  border: none;
+  border-radius: 5px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 5px; /* Ajusta el valor para aumentar o reducir el espaciado */
+  height: 80vh;
+  margin-bottom: 78px;
+}
