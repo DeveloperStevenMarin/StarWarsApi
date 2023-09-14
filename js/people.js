@@ -5,14 +5,108 @@ const prevPageBtn = document.getElementById("prevPageBtn");
 const nextPageBtn = document.getElementById("nextPageBtn");
 const currentPageSpan = document.getElementById("currentPage");
 const lastPageSpan = document.getElementById("lastPage");
+
+
 const modal = document.getElementById("myModal");
 const modalContentContainer = document.getElementById("modal-content-container");
 const closeModal = document.getElementById("modal-close-btn");
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
 
+searchInput.style.display = "block";
+searchButton.style.display = "block";
 // Variables para almacenar información de paginación
 let currentPage = 1;
 let lastPage = 1;
 
+// Función para abrir el modal y cargar detalles
+// Función para abrir el modal y cargar detalles
+function openModalWithDetails(personUrl) {
+    // Realiza la solicitud al API para obtener detalles
+    fetch(personUrl)
+        .then(response => response.json())
+        .then(personData => {
+            // Crea el contenido específico de los detalles en el modal
+            const modalContentHTML = `
+                <h2>${personData.name}</h2>
+                <p>Birth Year: ${personData.birth_year}</p>
+                <p>Eye Color: ${personData.eye_color}</p>
+                <p>Gender: ${personData.gender}</p>
+                <p>Height: ${personData.height} cm</p>
+                <p>Mass: ${personData.mass} kg</p>
+                <p>Hair Color: ${personData.hair_color}</p>
+                <p>Skin Color: ${personData.skin_color}</p>
+                <!-- Agrega más detalles según tus necesidades -->
+
+                <!-- Films -->
+                <h3>Films</h3>
+                <ul>
+                    ${personData.films.map(filmUrl => `<li><a href="${filmUrl}" target="_blank">View Film</a></li>`).join('')}
+                </ul>
+
+                <!-- Starships -->
+                <h3>Starships</h3>
+                <ul>
+                    ${personData.starships.map(starshipUrl => `<li><a href="${starshipUrl}" target="_blank">View Starship</a></li>`).join('')}
+                </ul>
+
+                <!-- Vehicles -->
+                <h3>Vehicles</h3>
+                <ul>
+                    ${personData.vehicles.map(vehicleUrl => `<li><a href="${vehicleUrl}" target="_blank">View Vehicle</a></li>`).join('')}
+                </ul>
+            `;
+
+            // Actualiza el contenido del modal y lo muestra
+            modalContentContainer.innerHTML = modalContentHTML;
+            modal.style.display = "flex";
+        })
+        .catch(error => console.error("Error fetching details:", error));
+}
+
+
+// Agrega un evento de clic al botón de búsqueda
+searchButton.addEventListener("click", function () {
+    const query = searchInput.value.trim();
+
+    if (query === "") {
+        // Si el campo de búsqueda está vacío, muestra un mensaje de error o simplemente no hace nada
+        return;
+    }
+
+    // Realiza una solicitud al API para buscar por nombre
+    const apiUrl = `https://swapi.dev/api/people/?search=${query}`;
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Verifica si se encontraron resultados
+            if (data.results.length === 0) {
+                // Muestra un mensaje de "No se encontraron resultados"
+                modalContentContainer.innerHTML = `<p>Not found. "${query}"</p>`;
+                modal.style.display = "flex";
+                return;
+            }
+
+            // Muestra los resultados en el modal
+            const resultsHTML = data.results.map(person => {
+                return `<p><a href="#" class="result-link" data-url="${person.url}">${person.name}</a></p>`;
+            }).join("");
+
+            modalContentContainer.innerHTML = resultsHTML;
+            modal.style.display = "flex";
+
+            // Agrega eventos de clic a los enlaces de resultados para mostrar detalles en el modal
+            const resultLinks = document.querySelectorAll(".result-link");
+            resultLinks.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const personUrl = this.getAttribute("data-url");
+                    openModalWithDetails(personUrl);
+                });
+            });
+        })
+        .catch(error => console.error("Error fetching search results:", error));
+});
 
 // Función para cargar datos de la página actual
 function loadPage(page) {
@@ -97,7 +191,7 @@ function displayPeople(people) {
 
         const homeworldCell = document.createElement("td");
         const planetLink = document.createElement("a");
-        
+
         if (person.homeworld) {
             fetch(person.homeworld)
                 .then(response => response.json())
@@ -105,13 +199,13 @@ function displayPeople(people) {
                     const planetName = homeworldData.name;
                     planetLink.textContent = planetName;
                     planetLink.href = "#"; // Puedes establecer el enlace como "#" por ahora
-        
+
                     // Agrega un evento de clic al enlace para mostrar información de planetas en el modal
                     planetLink.addEventListener("click", function (event) {
                         event.preventDefault(); // Evita la navegación por defecto
                         openModalWithPlanets(person.homeworld); // Función para mostrar información de planetas en el modal
                     });
-        
+
                     homeworldCell.appendChild(planetLink);
                 })
                 .catch(error => console.error("Error fetching homeworld data:", error));
@@ -119,7 +213,7 @@ function displayPeople(people) {
             // Si person.homeworld no existe, simplemente muestra un guión o un mensaje
             homeworldCell.textContent = "-";
         }
-        
+
         row.appendChild(homeworldCell);
 
         const filmsCell = document.createElement("td");
@@ -201,7 +295,6 @@ function openModalWithPlanets(planetUrl) {
                 <p>Gravity: ${planetData.gravity}</p>
                 <p>Population: ${planetData.population}</p>
                 <p>Terrain: ${planetData.terrain}</p>
-                <!-- Puedes agregar más detalles de los planetas según tus necesidades -->
             `;
 
             // Actualiza el contenido del modal y lo muestra

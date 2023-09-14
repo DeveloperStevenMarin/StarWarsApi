@@ -95,3 +95,10 @@ table {
   height: 80vh;
   margin-bottom: 78px;
 }
+#searchInput{
+  display: none;
+}
+
+#searchButton{
+  display: none;
+}

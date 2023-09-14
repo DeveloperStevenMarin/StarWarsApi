@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   </head>
   <body>
+ 
     <!-- Modal -->
     <div id="myModal" class="modal">
       <div class="modal-content">
@@ -25,6 +26,9 @@
       <option value="starships">StarShips</option>
       <option value="vehicles">Vehicles</option>
     </select>
+     <!-- Agrega esto donde deseas mostrar el campo de búsqueda -->
+<input type="text" id="searchInput" placeholder="Field...">
+<button id="searchButton">Search...</button>
     <table id="dataTable">
       <thead>
         <!-- Encabezados de la tabla -->
@@ -48,5 +52,6 @@
     <div id="app"></div>
     <script src="js/main.js"></script>
     <script id="categoryScript" src=""></script>
+    <script src="search.js"></script>
   </body>
 </html>

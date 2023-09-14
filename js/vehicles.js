@@ -64,12 +64,38 @@ function displayVehicles(vehicles) {
     // Limpia la tabla existente de vehículos
     dataTableVehicles.innerHTML = "";
 
+    // Crear el encabezado de la tabla de vehículos
+    const tableHeaderVehicles = document.createElement("thead");
+    const headerRowVehicles = document.createElement("tr");
+    const columnsVehicles = [
+        "Model",
+        "Name",
+        "Vehicle Class",
+        "Cargo Capacity",
+        "Consumables",
+        "Cost in Credits",
+        "Length",
+        "Manufacturer",
+        "Max Atmosphering Speed",
+        "Passengers",
+        "Films"
+    ];
+
+    columnsVehicles.forEach(columnName => {
+        const th = document.createElement("th");
+        th.textContent = columnName;
+        headerRowVehicles.appendChild(th);
+    });
+
+    tableHeaderVehicles.appendChild(headerRowVehicles);
+    dataTableVehicles.appendChild(tableHeaderVehicles);
+
     // Crear las filas de datos para cada vehículo
     const tableBodyVehicles = document.createElement("tbody");
     vehicles.forEach(vehicle => {
         const row = document.createElement("tr");
 
-        // Crear celdas para cada campo y asignar clases CSS
+        // Crear celdas para cada campo y asignar clases CSS si es necesario
         createTableCell(row, vehicle.model, "model-cell");
         createTableCell(row, vehicle.name, "name-cell");
         createTableCell(row, vehicle.vehicle_class, "vehicle-class-cell");
@@ -87,6 +113,7 @@ function displayVehicles(vehicles) {
 
     dataTableVehicles.appendChild(tableBodyVehicles);
 }
+
 
 // Función para crear una celda de tabla con una clase CSS
 function createTableCell(row, content, cssClass) {

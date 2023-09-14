@@ -8,6 +8,32 @@ const lastPageSpanMovies = document.getElementById("lastPage");
 const modalMovies = document.getElementById("myModal");
 const modalContentContainerMovies = document.getElementById("modal-content-container");
 const closeModalMovies = document.getElementById("modal-close-btn");
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const modal = document.getElementById("myModal");
+const modalContentContainer = document.querySelector(".modal-content-container");
+
+// Función para abrir el modal y cargar detalles
+function openModalWithDetails(personUrl) {
+    // Realiza la solicitud al API para obtener detalles
+    fetch(personUrl)
+        .then(response => response.json())
+        .then(personData => {
+            // Crea el contenido específico de los detalles en el modal
+            const modalContentHTML = `
+                <h2>${personData.name}</h2>
+                <p>Birth Year: ${personData.birth_year}</p>
+                <p>Eye Color: ${personData.eye_color}</p>
+                <p>Gender: ${personData.gender}</p>
+                <!-- Agrega más detalles según tus necesidades -->
+            `;
+
+            // Actualiza el contenido del modal y lo muestra
+            modalContentContainer.innerHTML = modalContentHTML;
+            modal.style.display = "flex";
+        })
+        .catch(error => console.error("Error fetching details:", error));
+}
 
 // Variables para almacenar información de paginación de películas
 let currentPageMovies = 1;
