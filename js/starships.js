@@ -8,6 +8,10 @@ const lastPageSpanStarships = document.getElementById("lastPage");
 const modalStarships = document.getElementById("myModal");
 const modalContentContainerStarships = document.getElementById("modal-content-container");
 const closeModalStarships = document.getElementById("modal-close-btn");
+const pageIntroductionContainerStarships = document.querySelector(".page-introduction-container");
+const paginationFooterStarships = document.getElementById("paginationFooter");
+paginationFooterStarships.style.display = "flex"
+pageIntroductionContainerStarships.style.display = "none";
 
 // Variables para almacenar información de paginación de naves espaciales
 let currentPageStarships = 1;

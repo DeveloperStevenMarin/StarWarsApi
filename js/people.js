@@ -1,17 +1,18 @@
 // people.js
 
 // Footer para el paginado
-const prevPageBtn = document.getElementById("prevPageBtn");
-const nextPageBtn = document.getElementById("nextPageBtn");
-const currentPageSpan = document.getElementById("currentPage");
-const lastPageSpan = document.getElementById("lastPage");
+const prevPageBtnPeople = document.getElementById("prevPageBtn");
+const nextPageBtnPeople = document.getElementById("nextPageBtn");
+const currentPageSpanPeople = document.getElementById("currentPage");
+const lastPageSpanPeople = document.getElementById("lastPage");
+const modalPeople = document.getElementById("myModal");
+const modalContentContainerPeople = document.getElementById("modal-content-container");
+const closeModalPeople = document.getElementById("modal-close-btn");
+const pageIntroductionContainerPeople = document.querySelector(".page-introduction-container");
+const paginationFooterPeople = document.getElementById("paginationFooter");
 
-
-const modal = document.getElementById("myModal");
-const modalContentContainer = document.getElementById("modal-content-container");
-const closeModal = document.getElementById("modal-close-btn");
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
+paginationFooterPeople.style.display = "flex"
+pageIntroductionContainerPeople.style.display = "none";
 
 searchInput.style.display = "block";
 searchButton.style.display = "block";
@@ -121,18 +122,18 @@ function loadPage(page) {
         .catch(error => console.error("Error fetching people data:", error));
 }
 
-closeModal.addEventListener("click", function () {
+closeModalPeople.addEventListener("click", function () {
     closeModalHandler()
 });
 
 // Función para actualizar la información de paginación
 function updatePaginationInfo() {
-    currentPageSpan.textContent = currentPage;
-    lastPageSpan.textContent = lastPage;
+    currentPageSpanPeople.textContent = currentPage;
+    lastPageSpanPeople.textContent = lastPage;
 }
 
 // Evento de clic para el botón "Anterior"
-prevPageBtn.addEventListener("click", function () {
+prevPageBtnPeople.addEventListener("click", function () {
     if (currentPage > 1) {
         currentPage--;
         loadPage(currentPage);
@@ -140,7 +141,7 @@ prevPageBtn.addEventListener("click", function () {
 });
 
 // Evento de clic para el botón "Siguiente"
-nextPageBtn.addEventListener("click", function () {
+nextPageBtnPeople.addEventListener("click", function () {
     currentPage++;
     loadPage(currentPage);
 });
@@ -277,8 +278,8 @@ function openModalWithFilm(filmUrl) {
             `;
 
             // Actualiza el contenido del modal y lo muestra
-            modalContentContainer.innerHTML = modalContentHTML;
-            modal.style.display = "flex";
+            modalContentContainerPeople.innerHTML = modalContentHTML;
+            modalPeople.style.display = "flex";
         })
         .catch(error => console.error("Error fetching film data:", error));
 }
@@ -298,15 +299,15 @@ function openModalWithPlanets(planetUrl) {
             `;
 
             // Actualiza el contenido del modal y lo muestra
-            modalContentContainer.innerHTML = modalContentHTML;
-            modal.style.display = "block";
+            modalContentContainerPeople.innerHTML = modalContentHTML;
+            modalPeople.style.display = "block";
         })
         .catch(error => console.error("Error fetching planet data:", error));
 }
 
 // Función para cerrar el modal
 function closeModalHandler() {
-    modal.style.display = "none";
+    modalPeople.style.display = "none";
 }
 
 // Llama a la función de inicialización cuando se carga este módulo

@@ -8,6 +8,10 @@ const lastPageSpanSpecies = document.getElementById("lastPage");
 const modalSpecies = document.getElementById("myModal");
 const modalContentContainerSpecies = document.getElementById("modal-content-container");
 const closeModalSpecies = document.getElementById("modal-close-btn");
+const pageIntroductionContainerSpecies = document.querySelector(".page-introduction-container");
+const paginationFooterSpecies = document.getElementById("paginationFooter");
+paginationFooterSpecies.style.display = "flex"
+pageIntroductionContainerSpecies.style.display = "none";
 
 // Variables para almacenar información de paginación de especies
 let currentPageSpecies = 1;

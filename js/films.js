@@ -8,10 +8,11 @@ const lastPageSpanMovies = document.getElementById("lastPage");
 const modalMovies = document.getElementById("myModal");
 const modalContentContainerMovies = document.getElementById("modal-content-container");
 const closeModalMovies = document.getElementById("modal-close-btn");
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
-const modal = document.getElementById("myModal");
-const modalContentContainer = document.querySelector(".modal-content-container");
+const pageIntroductionContainerMovies = document.querySelector(".page-introduction-container");
+const paginationFooterMovies = document.getElementById("paginationFooter");
+
+paginationFooterMovies.style.display = "flex"
+pageIntroductionContainerMovies.style.display = "none";
 
 // Función para abrir el modal y cargar detalles
 function openModalWithDetails(personUrl) {
@@ -29,8 +30,8 @@ function openModalWithDetails(personUrl) {
             `;
 
             // Actualiza el contenido del modal y lo muestra
-            modalContentContainer.innerHTML = modalContentHTML;
-            modal.style.display = "flex";
+            modalContentContainerMovies.innerHTML = modalContentHTML;
+            modalMovies.style.display = "flex";
         })
         .catch(error => console.error("Error fetching details:", error));
 }

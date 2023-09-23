@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SWAPI SPA</title>
+    <title>STAR WARS</title>
+    <link rel="icon" href="https://visualpharm.com/assets/195/Star%20Wars-595b40b85ba036ed117de471.svg" type="image/svg+xml">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   </head>
   <body>
@@ -18,7 +19,28 @@
       </div>
     </div>
     <h1 class="star-wars-title">Star Wars API SPA</h1>
+    
+      <div class="page-introduction-container">
+        <h3 class="page-introduction">A long time ago, in a galaxy far, far away... Welcome to the ultimate geek haven of information! Here, in our corner of cyberspace, we invite you to embark on a journey through the vast and thrilling universe of Star Wars. You don't need to be a Jedi or a Sith to unlock the secrets of this galaxy—all you need is your browser and your insatiable curiosity!
+
+          Wondering how many parsecs it takes the Millennium Falcon to travel from Tatooine to Alderaan? Or what species that adorable creature called "Yoda" belongs to? Or maybe you want to know which movies are part of the official Star Wars canon? Look no further!
+          
+          On this page, we've assembled an intergalactic database of information about characters, planets, starships, vehicles, species, and films from Star Wars. Navigate our pages as if you were Han Solo himself exploring the galaxy, and discover fascinating facts, plot details, and connections between different movies and characters.
+          
+          But that's not all— you can also use our search bar to find your favorite character in a matter of seconds! Just type in the name in our hyperdrive search, and we'll whisk you away to the information you seek.
+          
+          So, join us, padawan or Jedi master, and may the Force be with you as you delve into the secrets, magic, and adventure of Star Wars on this geeky page like no other. Let the quest for galactic knowledge begin! 😄🚀✨
+          
+          </h3>
+        <h3 class="page-introduction-2">To get started, Search or select a category.</h3>
+      </div>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton"></button>
+        </div>
+    <div class="select-container">
     <select id="categoryPicker">
+      <option value="none">Select Category:</option>
       <option value="films">Movies</option>
       <option value="people">Characters</option>
       <option value="planets">Planets</option>
@@ -26,9 +48,9 @@
       <option value="starships">StarShips</option>
       <option value="vehicles">Vehicles</option>
     </select>
-     <!-- Agrega esto donde deseas mostrar el campo de búsqueda -->
-<input type="text" id="searchInput" placeholder="Field...">
-<button id="searchButton">Search...</button>
+  </div>
+    
+     
     <table id="dataTable">
       <thead>
         <!-- Encabezados de la tabla -->
@@ -43,15 +65,15 @@
     </table>
     <!-- Footer para el paginado -->
     <div id="paginationFooter">
-      <button id="prevPageBtn">Previous</button>
+      <button id="prevPageBtn"></button>
       <span><span id="currentPage">1</span></span>
       <span> of <span id="lastPage">1</span></span>
-      <button id="nextPageBtn">Next</button>
+      <button id="nextPageBtn"></button>
   </div>
 </div>
     <div id="app"></div>
     <script src="js/main.js"></script>
     <script id="categoryScript" src=""></script>
-    <script src="search.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>

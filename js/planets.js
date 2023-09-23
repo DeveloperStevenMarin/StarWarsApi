@@ -8,6 +8,10 @@ const lastPageSpanPlanets = document.getElementById("lastPage");
 const modalPlanets = document.getElementById("myModal");
 const modalContentContainerPlanets = document.getElementById("modal-content-container");
 const closeModalPlanets = document.getElementById("modal-close-btn");
+const pageIntroductionContainerPlanets = document.querySelector(".page-introduction-container");
+const paginationFooterPlanets = document.getElementById("paginationFooter");
+paginationFooterPlanets.style.display = "flex"
+pageIntroductionContainerPlanets.style.display = "none";
 
 // Variables para almacenar información de paginación de planetas
 let currentPagePlanets = 1;

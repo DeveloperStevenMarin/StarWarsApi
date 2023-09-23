@@ -8,6 +8,11 @@ const lastPageSpanVehicles = document.getElementById("lastPage");
 const modalVehicles = document.getElementById("myModal");
 const modalContentContainerVehicles = document.getElementById("modal-content-container");
 const closeModalVehicles = document.getElementById("modal-close-btn");
+const pageIntroductionContainerVehicles = document.querySelector(".page-introduction-container");
+const paginationFooterVehicles = document.getElementById("paginationFooter");
+paginationFooterVehicles.style.display = "flex"
+pageIntroductionContainerVehicles.style.display = "none";
+
 
 // Variables para almacenar información de paginación de vehículos
 let currentPageVehicles = 1;

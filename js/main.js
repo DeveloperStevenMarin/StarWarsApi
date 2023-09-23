@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const apiUrl = "https://swapi.dev/api/";
     const categoryPicker = document.getElementById("categoryPicker");
     const categoryScript = document.getElementById("categoryScript");
+    const global = {}
+    global.prevPageBtn = document.getElementById("prevPageBtn");
+    global.nextPageBtn = document.getElementById("nextPageBtn");
+    global.currentPageSpan = document.getElementById("currentPage");
+    global.lastPageSpan = document.getElementById("lastPage");
+    global.modal = document.getElementById("myModal");
+    global.modalContentContainer = document.getElementById("modal-content-container");
+    global.closeModal = document.getElementById("modal-close-btn");
+    global.pageIntroductionContainer = document.querySelector(".page-introduction-container");
+    global.paginationFooter = document.getElementById("paginationFooter");
 
     // Función para cargar y ejecutar el módulo JavaScript específico según la categoría
     function loadCategoryModule(selectedCategory) {
